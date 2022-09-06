@@ -1,6 +1,6 @@
 import unittest
 
-from mycode import *
+from Challenge_1 import *
 
 
 class MyFirstTests(unittest.TestCase):
