@@ -10,4 +10,6 @@ class MyFirstTests(unittest.TestCase):
 
     def test_custom_num_list(self):
         self.assertEqual(len(create_list(10)), 10)
-        
+
+if __name__ == '__main__':
+    unittest.main()
