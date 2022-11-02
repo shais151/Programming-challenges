@@ -46,4 +46,5 @@ def main():
     calc(values)
     return main()
 
-main()
+if __name__ == "__main__":
+    main()

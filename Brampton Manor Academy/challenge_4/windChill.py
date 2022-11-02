@@ -10,7 +10,8 @@ def calculate_chill(air_temp, air_speed):
 def output(wind_chill):
     print(f"Wind chill: {wind_chill}")
 
-air_temp = temp_input()
-air_speed = wind_input()
-wind_chill = calculate_chill(air_temp, air_speed)
-output(wind_chill)
+if __name__ == "__main__":
+    air_temp = temp_input()
+    air_speed = wind_input()
+    wind_chill = calculate_chill(air_temp, air_speed)
+    output(wind_chill)

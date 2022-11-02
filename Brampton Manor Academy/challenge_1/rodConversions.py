@@ -19,5 +19,6 @@ def rodConversions(rods):
     print(f"Furlongs: {rods_to_furlongs(rods)}") 
     print(f"Minutes to walk: {time_to_walk(rods)}") 
 
-rods = enter_rods()
-rodConversions(rods)
+if __name__ == "__main__":
+    rods = enter_rods()
+    rodConversions(rods)

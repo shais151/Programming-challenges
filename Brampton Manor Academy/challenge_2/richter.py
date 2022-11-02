@@ -25,6 +25,7 @@ def richterConversions(richter):
     print(f"Equivalence in joules: {richter_to_energy(richter)}")
     print(f"Equivalence in tons of TNT: {energy_to_tnt(richter)}")
 
-table()
-richter = input_richter()
-richterConversions(richter)
+if __name__ == "__main__":
+    table()
+    richter = input_richter()
+    richterConversions(richter)
