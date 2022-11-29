@@ -15,37 +15,55 @@ def getCardNumber():
     return number
 
 def identifyPAN(number):
-    num_str = str(number)
-    return int(num_str[7:15])
+    return int(number[6:15])
 
-def checksum(number):
-    num_str = str(number)
-    return int(num_str[-1])
+def identifyChecksum(number):
+    return int(number[-1])
 
 def identifyIssuer(number):
-    num_str = str(number)
-    if num_str[0:2] == "34" or num_str[0:2] == "37":
+    if number[0:2] == "34" or number[0:2] == "37":
         return "American Express"
-    elif num_str[0:1] == "3":
+    elif number[0:1] == "3":
         return "JCB"
-    elif num_str[0:1] == "4":
+    elif number[0:1] == "4":
         return "Visa"
-    elif num_str[0:2] >= "51" and num_str[0:2] <= "55":
+    elif number[0:2] >= "51" and number[0:2] <= "55":
         return "MasterCard"
     else:
-        return
+        return "Unknown"
 
-def checkValidity(number, pan, checksumDigit):
-    return
+def calculateChecksum(numArr):
+    sum = 0
+    for num in numArr:
+        sum += num
+    checkSum = (10 - (sum % 10)) % 10
+    return checkSum
+
+def checkValidity(number, checksumDigit):
+    payload = str(number)[0:15]
+    sumArr = []
+    i = 0
+    for num in payload:
+        if i % 2 == 0:
+            num = str(int(num) * 2)
+            if len(num) > 1:
+                num = int(num[0]) + int(num[1])
+        sumArr.append(int(num))
+        i += 1
+    if calculateChecksum(sumArr) == checksumDigit:
+        return "valid"
+    else:
+        return "not valid"
 
 def output(number, issuer, isReal):
     print(f"Card number: {number}")
     print(f"Issuer: {issuer}")
+    print(f"The card is {isReal}")
 
 if __name__ == "__main__":
     number = getCardNumber()
-    pan = identifyPAN(number)
-    checksumDigit = checksum(number)
-    issuer = identifyIssuer(number)
-    isReal = checkValidity(number, pan, checksumDigit)
-    # output(number, issuer, isReal)
+    pan = identifyPAN(str(number))
+    checksumDigit = identifyChecksum(str(number))
+    issuer = identifyIssuer(str(number))
+    isReal = checkValidity(number, checksumDigit)
+    output(number, issuer, isReal)
