@@ -1,4 +1,4 @@
-def getCardNumber():
+def getCardNumber() -> int:
     number = 0
     while number == 0:
         try:
@@ -14,13 +14,13 @@ def getCardNumber():
             print("Card number must be just numbers")
     return number
 
-def identifyPAN(number):
+def identifyPAN(number: str) -> int:
     return int(number[6:15])
 
-def identifyChecksum(number):
+def identifyChecksum(number: str) -> int:
     return int(number[-1])
 
-def identifyIssuer(number):
+def identifyIssuer(number: str) -> str:
     if number[0:2] == "34" or number[0:2] == "37":
         return "American Express"
     elif number[0:1] == "3":
@@ -32,14 +32,14 @@ def identifyIssuer(number):
     else:
         return "Unknown"
 
-def calculateChecksum(numArr):
+def calculateChecksum(numArr) -> int:
     sum = 0
     for num in numArr:
         sum += num
     checkSum = (10 - (sum % 10)) % 10
     return checkSum
 
-def checkValidity(number, checksumDigit):
+def checkValidity(number: int, checksumDigit: int) -> str:
     payload = str(number)[0:15]
     sumArr = []
     i = 0
@@ -55,15 +55,15 @@ def checkValidity(number, checksumDigit):
     else:
         return "not valid"
 
-def output(number, issuer, isReal):
+def output(number: int, issuer: str, isReal: str):
     print(f"Card number: {number}")
     print(f"Issuer: {issuer}")
     print(f"The card is {isReal}")
 
 if __name__ == "__main__":
-    number = getCardNumber()
-    pan = identifyPAN(str(number))
-    checksumDigit = identifyChecksum(str(number))
-    issuer = identifyIssuer(str(number))
-    isReal = checkValidity(number, checksumDigit)
+    number:int = getCardNumber()
+    pan:int = identifyPAN(str(number))
+    checksumDigit:int = identifyChecksum(str(number))
+    issuer:str = identifyIssuer(str(number))
+    isReal:str = checkValidity(number, checksumDigit)
     output(number, issuer, isReal)

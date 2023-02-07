@@ -1,6 +1,6 @@
-def richter_to_energy(richter):
+def richter_to_energy(richter: float) -> float:
     return 10 ** ((1.5 * richter) + 4.8)
-def energy_to_tnt(richter):
+def energy_to_tnt(richter: float) -> float:
     return richter_to_energy(richter) / 4184000000
 
 def table():
@@ -18,14 +18,14 @@ def table():
         print(f"{value} {energy:>{30 - energyLength}} {tnt:>{25 - tntLength}} ")
 
 
-def input_richter():
+def input_richter() -> float:
     return float(input("Please enter a Richter scale value: "))
 
-def richterConversions(richter):
+def richterConversions(richter:float):
     print(f"Equivalence in joules: {richter_to_energy(richter)}")
     print(f"Equivalence in tons of TNT: {energy_to_tnt(richter)}")
 
 if __name__ == "__main__":
     table()
-    richter = input_richter()
+    richter:float = input_richter()
     richterConversions(richter)

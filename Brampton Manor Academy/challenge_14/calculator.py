@@ -43,7 +43,7 @@ def calc(array):
     return answer
 
 def main():
-    values = input("Enter your calculation: ")
+    values:str = input("Enter your calculation: ")
     calcArr = check_values(values)
     if calcArr == -1:
         return main()
