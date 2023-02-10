@@ -40,9 +40,9 @@ def calculateChecksum(numArr) -> int:
     return checkSum
 
 def checkValidity(number: int, checksumDigit: int) -> str:
-    payload = str(number)[0:15]
-    sumArr = []
-    i = 0
+    payload:str = str(number)[0:15]
+    sumArr:list = []
+    i:int = 0
     for num in payload:
         if i % 2 == 0:
             num = str(int(num) * 2)

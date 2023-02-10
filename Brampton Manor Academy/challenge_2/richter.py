@@ -4,16 +4,16 @@ def energy_to_tnt(richter: float) -> float:
     return richter_to_energy(richter) / 4184000000
 
 def table():
-    richterValues = [1, 5, 9.1, 9.2, 9.5]
+    richterValues:list[float] = [1, 5, 9.1, 9.2, 9.5]
 
-    headerValues = ["Richter", "Joules", "TNT"]
+    headerValues:list[str] = ["Richter", "Joules", "TNT"]
     print(f'{headerValues[0]} {headerValues[1]:>15} {headerValues[2]:>23} ')
     for value in richterValues:        
         energy = richter_to_energy(value)
         tnt = energy_to_tnt(value)
 
-        energyLength = len(str(value))        
-        tntLength = len(str(value))        
+        energyLength:int = len(str(value))        
+        tntLength:int = len(str(value))        
 
         print(f"{value} {energy:>{30 - energyLength}} {tnt:>{25 - tntLength}} ")
 

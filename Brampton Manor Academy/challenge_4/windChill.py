@@ -4,7 +4,7 @@ def wind_input() -> float:
     return float(input("Enter wind speed: "))
 
 def calculate_chill(air_temp: float, air_speed: float) -> float:
-    wind_chill = 35.74 + 0.6215 * air_temp - 35.75 * air_speed**0.16 + 0.4275 * air_temp * air_speed**0.16
+    wind_chill:float = 35.74 + 0.6215 * air_temp - 35.75 * air_speed**0.16 + 0.4275 * air_temp * air_speed**0.16
     return wind_chill
 
 def output(wind_chill: float):
